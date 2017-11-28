@@ -32,10 +32,11 @@
     [player1-cards player2-cards]
     (let [c1 (first player1-cards)
           c2 (first player2-cards)
-          r1 (rest player1-cards)
-          r2 (rest player2-cards)
+          r1 (rest (vec player1-cards))
+          r2 (rest (vec player2-cards))
           winner (play-round c1 c2)]
       (if (= c1 winner)
         (recur (conj r1 c1 c2) r2)
         (recur r1 (conj r2 c1 c2))))))
+
 
